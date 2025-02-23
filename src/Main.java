@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class Main {
     public static void main(String[] args) {
         // int day = 2;
@@ -6,6 +8,9 @@ class Main {
         // forLoop();
         // whileLoop();
         // doWhileLoop();
+        int currentYear = 2025;
+        // System.out.println(getInputFromConsole(currentYear));
+        System.out.println(getInputFromScanner(currentYear));
     }
 
     /**
@@ -106,7 +111,15 @@ class Main {
      * prompting user for information.
      * It is not available in all environments, so it is not recommended to use it.
      */
+    public static String getInputFromConsole(int currentYear) {
+        String name = System.console().readLine("Enter your name: ");
+        System.out.println("Hello " + name);
 
+        String dateOfBirth = System.console().readLine("What year you were born? ");
+        int yearOfBirth = Integer.parseInt(dateOfBirth);
+        int age = currentYear - yearOfBirth;
+        return "You are " + age + " years old";  
+    }
     /*
      * Command Line Arguments
      * This is calling the java program and specifying the data in the call, This is
@@ -118,4 +131,18 @@ class Main {
      * Scanner
      * Scanner class was built to be a common way to read input either using System.in or file.
      */
-}
+    public static String getInputFromScanner(int currentYear) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Hi, what's your name.");
+        
+        String name = scanner.nextLine();
+        System.out.println("Hi "+ name +"!");
+        
+        System.out.println("What year were you born?");
+        String dateOfBirth = scanner.nextLine();
+        
+        int age = currentYear - Integer.parseInt(dateOfBirth); 
+
+        return "So you are " + age + " year old";
+    }
+}   
